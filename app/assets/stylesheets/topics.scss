@@ -1,0 +1,39 @@
+// Place all the styles related to the Topics controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.topic-meta {
+  background: #fff;
+  text-align: left;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.topic-detail {
+  background: #fff;
+  text-align: left;
+  padding: 10px;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.topic-comment {
+  margin-top: 20px;
+}
+
+.comments-feed {
+  margin-top: 20px;
+  padding: 15px;
+  background: #fff;
+  border: 1px solid #ddd;
+}
+
+.topic-comment-margin{
+  margin-top: 20px;
+}
+
+.mark {
+  font-weight: bold;
+  background: #EFEFEF;
+}

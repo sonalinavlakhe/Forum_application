@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+      <% @topics.each do |topic| %>
+        <div class="topic-meta">
+          <div class="row">
+            <div class="col-10">
+              <div class="topic-sub h4">
+                <%= link_to topic.subject, topic_path(topic.id),{:style => 'color: black'}%>
+              </div>
+              <p class="text-muted"><%=topic.content.truncate(80)%></p>
+              <div class="small text-info"><%=topic.user.email%>
+                <span class="text-muted small">posted <%=time_ago_in_words(topic.created_at)%> ago </span>
+              </div>
+            </div>
+            <div class="col-2">
+              <%= link_to topic_path(topic.id) do %>
+                <i class="fa fa-comment text-muted"></i>
+              <%end%>
+              <span class="text-muted"><%= topic.total_comments_count%></span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class= "col-3">
+      <%if user_signed_in? %>
+        <%= link_to "Create Thread", new_topic_path, class: "btn btn-info btn-sm btn-block"%>
+      <%else%>
+        <%= link_to "Create Thread", sign_up_path, class: "btn btn-info btn-sm btn-block"%>
+      <%end%>
+    </div>
+  </div>
+</div>

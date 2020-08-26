@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+      <div class="topic-meta">
+        <div class="text-sm text-info">
+          <%=@topic.user.email%>
+          <span class="text-muted">posted 
+            <%=time_ago_in_words(@topic.created_at)%> ago
+          </span>
+        </div>
+      </div>
+      <div class="topic-detail">
+        <div class="topic-sub h4">
+          <%= @topic.subject %>
+        </div>
+        <%= simple_format @topic.content%>
+      </div>
+      <div class= "topic-comment-margin">
+        <% if @comments.present? %>
+          <%= render "topics/comments"%>
+        <%end%>
+      </div>
+      <%if user_signed_in? %>
+        <div class="topic-comment">
+          <%= form_for Comment.new do |f| %>
+            <%= f.hidden_field :topic_id, value: @topic.id %>
+            <div class="form-group">
+              <%= f.text_area :comment, placeholder: "Add comment here...", class: "form-control"%>
+            </div>
+            <div class="mt-2">
+              <%= f.submit "Post", class: "btn btn-info float-right" %>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+          <div class = "text-center">
+            <%= link_to 'Sign-In', sign_up_path, class: "text-info "%> to participate in this thread!
+          </div>
+      <% end %>
+    </div>
+    <div class= "col-3">
+      <%if user_signed_in? %>
+        <%= link_to "Create Thread", new_topic_path, class: "btn btn-info btn-sm btn-block"%>
+      <%else%>
+        <%= link_to "Create Thread", sign_up_path, class: "btn btn-info btn-sm btn-block"%>
+      <%end%>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+Searching 2318 files for "Welcome to Developer's Forum Application"
+
+/Users/sonali.bhavsar/Desktop/forum_app/app/views/public/homepage.html.erb:
+    1: <h2 class="mt-5">Welcome to Developer's Forum Application</h2>
+    2  <p class="lead">Please Sign Up or Login to continue</p>
+    3  <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-info"%>
+
+1 match in 1 file
