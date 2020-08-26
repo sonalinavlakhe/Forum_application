@@ -20,11 +20,16 @@ class TopicsController < ApplicationController
   end
 
   def search
-    @topics = Topic.where("subject ILIKE ?", "%" + params[:q] + "%")
-    if @topics.present?
-      flash.now[:success] = "Search found successfully!"
+    @topics = Array.new
+    if params[:q].blank?
+      flash.now[:warning] = "Please enter keyword"
     else
-      flash.now[:info] = "Thread does not exists please create new Thread"
+      @topics = Topic.where("subject ILIKE ?", "%" + params[:q] + "%")
+      if @topics.present?
+        flash.now[:success] = "Search result found!"
+      else
+        flash.now[:info] = "Thread does not exists please create new thread"
+      end
     end
   end
 
