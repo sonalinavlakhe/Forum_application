@@ -9,7 +9,10 @@
                 <%= link_to topic.subject, topic_path(topic.id),{:style => 'color: black'}%>
               </div>
               <p class="text-muted"><%=topic.content.truncate(80)%></p>
-              <div class="small text-info"><%=topic.user.email%>
+
+              <div class="small text-info">
+                <%=profile_picture(topic.user, 20)%>
+                <%=topic.user.email%>
                 <span class="text-muted small">posted <%=time_ago_in_words(topic.created_at)%> ago </span>
               </div>
             </div>

@@ -4,6 +4,7 @@
       <div class="container">
           <div class="topic-meta row">
           <div class="text-sm text-info">
+            <%=profile_picture(@topic.user, 30)%>
             <%=@topic.user.email%>
             <span class="text-muted">posted 
               <%=time_ago_in_words(@topic.created_at)%> ago
@@ -37,7 +38,7 @@
             <% unless @topic.status == 'CLOSED' %>
               <div class="form-check">
                 <%= check_box_tag :is_closed, value='checked', checked = false, class: "form-check-input"%>
-                <label class="form-check-label" for="is_closed">Close this thread!</label>
+                <label class="form-check-label" for="is_closed">Close Thread</label>
               </div>
             <% end %>
             <%= f.submit "Post", class: "btn btn-info mt-2" %>

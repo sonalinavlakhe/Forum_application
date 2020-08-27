@@ -1,6 +1,9 @@
 <% @comments.each do |comment| %>
   <div class="topic-comment-margin">
-    <div class="topic-meta text-info text-sm"> <%= comment.user.email%> <span class="text-muted">replied <%=time_ago_in_words(comment.created_at)%> ago </span>
+    <div class="topic-meta text-info text-sm">
+      <%=profile_picture(@topic.user, 30)%>
+      <%= comment.user.email%>
+      <span class="text-muted">replied <%=time_ago_in_words(comment.created_at)%> ago </span>
     </div>
     <div class="topic-detail"><%=simple_format comment.comment %></div>
   </div>
