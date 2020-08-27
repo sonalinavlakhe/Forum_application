@@ -9,7 +9,7 @@ class TopicsController < ApplicationController
     if @topic.save
       redirect_to dashboard_path, success: "Topic Created successfully!"
     else
-      redirect_to new_topic_path, danger: "Topic was not saved correctly"
+      redirect_to new_topic_path, danger: @topic.errors.full_messages.join(' ')
     end
   end
 
@@ -20,7 +20,7 @@ class TopicsController < ApplicationController
   end
 
   def search
-    @topics = Array.new
+    @topics = Topic.new
     if params[:q].blank?
       flash.now[:warning] = "Please enter keyword"
     else
