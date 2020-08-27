@@ -13,11 +13,16 @@
                 <span class="text-muted small">posted <%=time_ago_in_words(topic.created_at)%> ago </span>
               </div>
             </div>
-            <div class="col-2">
+            <div class="col-2 text-right">
               <%= link_to topic_path(topic.id) do %>
                 <i class="fa fa-comment text-muted"></i>
               <%end%>
               <span class="text-muted"><%= topic.total_comments_count%></span>
+              <% if topic.status == 'CLOSED' %>
+                <div class="mt-5">
+                  <span class="badge badge-info badge-pill">Thread closed</span>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>

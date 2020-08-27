@@ -31,6 +31,7 @@ class TopicsController < ApplicationController
         flash.now[:info] = "Thread does not exists please create new thread"
       end
     end
+    render 'users/index'
   end
 
   private

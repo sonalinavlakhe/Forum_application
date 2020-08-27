@@ -1,13 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="col-9">
-      <div class="topic-meta">
-        <div class="text-sm text-info">
-          <%=@topic.user.email%>
-          <span class="text-muted">posted 
-            <%=time_ago_in_words(@topic.created_at)%> ago
-          </span>
-        </div>
+      <div class="container">
+          <div class="topic-meta row">
+          <div class="text-sm text-info">
+            <%=@topic.user.email%>
+            <span class="text-muted">posted 
+              <%=time_ago_in_words(@topic.created_at)%> ago
+            </span>
+          </div>
+          <% if @topic.status == 'CLOSED' %>
+            <div class="ml-2">
+              <span class="badge badge-info badge-pill">Thread closed</span>
+            </div>
+          <% end %>
+      </div>
       </div>
       <div class="topic-detail">
         <div class="topic-sub h4">
@@ -27,13 +34,17 @@
             <div class="form-group">
               <%= f.text_area :comment, placeholder: "Add comment here...", class: "form-control"%>
             </div>
-            <div class="mt-2">
-              <%= f.submit "Post", class: "btn btn-info float-right" %>
-            </div>
+            <% unless @topic.status == 'CLOSED' %>
+              <div class="form-check">
+                <%= check_box_tag :is_closed, value='checked', checked = false, class: "form-check-input"%>
+                <label class="form-check-label" for="is_closed">Close this thread!</label>
+              </div>
+            <% end %>
+            <%= f.submit "Post", class: "btn btn-info mt-2" %>
           <% end %>
         </div>
       <% else %>
-          <div class = "text-center">
+          <div class = "text-center mt-2">
             <%= link_to 'Sign-In', sign_up_path, class: "text-info "%> to participate in this thread!
           </div>
       <% end %>
