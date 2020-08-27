@@ -8,9 +8,11 @@
   3. Postgres versions - (PostgreSQL) 12.3
   
 * Application setup
+
    bundle install
  
 * Setup DB migration
+
   rails db:migrate
 
 * Load the sample json data
@@ -22,4 +24,5 @@
      rake load_comments_data path_to_comments_json_file
 
 * Run the application
+
   rails server
