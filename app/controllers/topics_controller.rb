@@ -9,7 +9,7 @@ class TopicsController < ApplicationController
     if @topic.save
       redirect_to dashboard_path, success: "Topic Created successfully!"
     else
-      redirect_to new_topic_path, danger: @topic.errors.full_messages.join(' ')
+      redirect_to new_topic_path, danger: @topic.errors.full_messages.join(", ")
     end
   end
 
@@ -20,7 +20,7 @@ class TopicsController < ApplicationController
   end
 
   def search
-    @topics = Topic.where("subject ILIKE ?", "%" + params[:q] + "%").order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+    @topics = Topic.where("subject ILIKE ?", "%" + params[:q].strip + "%").order(created_at: :desc).paginate(page: params[:page], per_page: 5)
     if @topics.present?
       flash.now[:success] = "Search result found!"
     else

@@ -4,7 +4,4 @@ class UsersController < ApplicationController
   def index
     @topics = Topic.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
   end
-
-  def show
-  end
 end

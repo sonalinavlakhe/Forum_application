@@ -1,24 +1,10 @@
-# README
+# Forum_application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Setup
 
-Things you may want to cover:
+* Migrate
 
-* Ruby version
+* Rake task
 
-* System dependencies
+* Run the application
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
