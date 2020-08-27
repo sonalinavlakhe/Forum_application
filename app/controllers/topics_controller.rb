@@ -20,16 +20,11 @@ class TopicsController < ApplicationController
   end
 
   def search
-    @topics = Topic.new
-    if params[:q].blank?
-      flash.now[:warning] = "Please enter keyword"
+    @topics = Topic.where("subject ILIKE ?", "%" + params[:q] + "%").order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+    if @topics.present?
+      flash.now[:success] = "Search result found!"
     else
-      @topics = Topic.where("subject ILIKE ?", "%" + params[:q] + "%")
-      if @topics.present?
-        flash.now[:success] = "Search result found!"
-      else
-        flash.now[:info] = "Thread does not exists please create new thread"
-      end
+      flash.now[:info] = "Thread does not exists please create new thread"
     end
     render 'users/index'
   end
